@@ -36,5 +36,4 @@ RUN chmod +x /var/www/html/docker/healthcheck.sh
 EXPOSE 9000
 
 ENTRYPOINT ["bash", "/var/www/html/docker/entrypoint.sh"]
-HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 CMD bash /var/www/html/docker/healthcheck.sh
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=9000"]
