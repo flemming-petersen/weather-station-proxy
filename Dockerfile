@@ -31,7 +31,6 @@ RUN npm ci
 RUN npm run build
 
 RUN chmod +x /var/www/html/docker/entrypoint.sh
-RUN chmod +x /var/www/html/docker/healthcheck.sh
 
 EXPOSE 9000
 
