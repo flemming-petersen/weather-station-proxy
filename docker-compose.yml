@@ -47,8 +47,6 @@ services:
             - --providers.docker.exposedByDefault=false
             - --entrypoints.https.address=:443
             - --entrypoints.http.address=:80
-            - --entrypoints.http.http.redirections.entryPoint.to=https
-            - --entrypoints.http.http.redirections.entryPoint.scheme=https
             - --certificatesresolvers.tls.acme.tlschallenge=true
             - --certificatesresolvers.tls.acme.email=foerde@flemming.cloud
             - --certificatesresolvers.tls.acme.storage=/letsencrypt/acme.json
