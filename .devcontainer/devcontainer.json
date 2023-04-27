@@ -26,7 +26,8 @@
 				"GitHub.copilot-labs",
 				"onecentlin.laravel-blade",
 				"bmewburn.vscode-intelephense-client",
-				"ms-vsliveshare.vsliveshare"
+				"ms-vsliveshare.vsliveshare",
+				"bradlc.vscode-tailwindcss"
 			]
 		}
 	}
