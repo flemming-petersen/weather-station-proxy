@@ -7,13 +7,16 @@ networks:
 services:
     application:
         container_name: application
-        image: foerde:latest
+        image: ghcr.io/flemming-petersen/weather-station-proxy:latest
         networks:
-        - web
+            - web
         env_file:
-        - .env
+            - .env
         volumes:
-        - ./database:/var/www/html/databasestore
+            - ./database:/var/www/html/databasestore
+        logging:
+            options:
+                max-size: "10m"
         labels:
             - "traefik.enable=true"
             - "traefik.http.routers.foerde.rule=Host(`wetter.flemming.cloud`)"
@@ -40,7 +43,6 @@ services:
             - --api.insecure=true
             - --providers.docker=true
             - --providers.docker.exposedByDefault=false
-            - --providers.docker.swarmMode=true
             - --entrypoints.https.address=:443
             - --entrypoints.http.address=:80
             - --entrypoints.http.http.redirections.entryPoint.to=https
