@@ -1,12 +1,50 @@
 version: '3.1'
 
+networks:
+  web:
+    external: true
+
 services:
-  application:
-    container_name: application
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "9000:9000"
-    volumes:
-      - .:/var/www/html
+    application:
+        container_name: application
+        image: foerde:latest
+        networks:
+        - web
+        env_file:
+        - .env
+        volumes:
+        - ./database:/var/www/html/databasestore
+        labels:
+            - "traefik.enable=true"
+            - "traefik.http.routers.foerde.rule=Host(`wetter.flemming.cloud`)"
+            - "traefik.http.routers.foerde.entrypoints=https,http"
+            - "traefik.http.services.foerde.loadbalancer.server.port=9000"
+            - "traefik.http.routers.foerde.tls.certresolver=tls"
+            - "traefik.docker.network=web"
+
+    traefik:
+        image: "traefik:v2.6"
+        ports:
+            - 80:80
+            - 443:443
+        networks:
+            - web
+        logging:
+            options:
+                max-size: "10m"
+                max-file: "3"
+        volumes:
+            - "./letsencrypt:/letsencrypt"
+            - "/var/run/docker.sock:/var/run/docker.sock:ro"
+        command:
+            - --api.insecure=true
+            - --providers.docker=true
+            - --providers.docker.exposedByDefault=false
+            - --providers.docker.swarmMode=true
+            - --entrypoints.https.address=:443
+            - --entrypoints.http.address=:80
+            - --entrypoints.http.http.redirections.entryPoint.to=https
+            - --entrypoints.http.http.redirections.entryPoint.scheme=https
+            - --certificatesresolvers.tls.acme.tlschallenge=true
+            - --certificatesresolvers.tls.acme.email=foerde@flemming.cloud
+            - --certificatesresolvers.tls.acme.storage=/letsencrypt/acme.json
