@@ -17,5 +17,9 @@ use App\Http\Controllers\StationController;
 
 
 Route::get('/', [StationController::class, 'index']);
+Route::get('/health', function () {
+    return response()->json(['status' => 'ok']);
+});
+
 
 Route::get('/weatherstation/updateweatherstation.php', [EntryController::class, 'store']);
