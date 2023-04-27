@@ -12,8 +12,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
-        $schedule->command('foerde:send-data')->everyFourMinutes();
+        $schedule->command('foerde:send-data')->everyMinute();
         $schedule->command('foerde:delete-old-entries')->everyThirtyMinutes();
     }
 

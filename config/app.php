@@ -5,7 +5,7 @@ use Illuminate\Support\ServiceProvider;
 
 return [
 
-    'update_interval' => env('UPDATE_INTERVAL', 4),
+    'update_interval' => env('UPDATE_INTERVAL', 240),
     /*
     |--------------------------------------------------------------------------
     | Application Name

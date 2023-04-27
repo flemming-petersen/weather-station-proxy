@@ -19,7 +19,7 @@ class DeleteOldEntries extends Command
      *
      * @var string
      */
-    protected $description = 'This command deletes old entries from the database wich are older than 3 days.';
+    protected $description = 'This command deletes old entries from the database wich are older than 30 minutes.';
 
     /**
      * Execute the console command.
@@ -27,7 +27,7 @@ class DeleteOldEntries extends Command
     public function handle()
     {
         $this->info('Deleting old entries...');
-        $entries = Entry::where('created_at', '<', now()->subDays(3))->get();
+        $entries = Entry::where('created_at', '<', now()->subMinutes(30))->get();
         foreach ($entries as $entry) {
             $entry->delete();
         }
