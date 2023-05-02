@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Station;
 use App\Services\WindguruService;
+use App\Helpers\CalculatedWindHelper;
 
 class SendData extends Command
 {
@@ -31,9 +32,13 @@ class SendData extends Command
         $stations = Station::all();
         foreach ($stations as $station) {
             $this->info('Sending data for station ' . $station->public_name . '...');
-            if ($station->windguru_uid && $station->windguru_salt && $station->windguru_password) {
-                $this->info('Sending data to Windguru...');
-                WindguruService::sendData($station);
+            if (CalculatedWindHelper::getCurrentFlattenedAvgWindSpeed($station)) {
+                if ($station->windguru_uid && $station->windguru_salt && $station->windguru_password) {
+                    $this->info('Sending data to Windguru...');
+                    WindguruService::sendData($station);
+                }
+            } else {
+                $this->info('No data to send.');
             }
         }
         $this->info('Done!');

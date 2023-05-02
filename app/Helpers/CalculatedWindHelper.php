@@ -9,7 +9,7 @@ use App\Models\Entry;
 
 class CalculatedWindHelper
 {
-    public static function getCurrentFlattenedMinWindSpeed(Station $station, int $timeRange = 4): float
+    public static function getCurrentFlattenedMinWindSpeed(Station $station, int $timeRange = 4): ?float
     {
         $min = Entry::where('station_id', $station->id)
             ->where('created_at', '>=', now()->subMinutes($timeRange))
@@ -19,10 +19,10 @@ class CalculatedWindHelper
             return round($min, 2);
         }
 
-        return 0;
+        return null;
     }
 
-    public static function getCurrentFlattenedMaxWindSpeed(Station $station, int $timeRange = 4): float
+    public static function getCurrentFlattenedMaxWindSpeed(Station $station, int $timeRange = 4): ?float
     {
         $max = Entry::where('station_id', $station->id)
             ->where('created_at', '>=', now()->subMinutes($timeRange))
@@ -32,10 +32,10 @@ class CalculatedWindHelper
             return round($max, 2);
         }
 
-        return 0;
+        return null;
     }
 
-    public static function getCurrentFlattenedAvgWindSpeed(Station $station, int $timeRange = 4): float
+    public static function getCurrentFlattenedAvgWindSpeed(Station $station, int $timeRange = 4): ?float
     {
         $avg = Entry::where('station_id', $station->id)
             ->where('created_at', '>=', now()->subMinutes($timeRange))
@@ -45,10 +45,10 @@ class CalculatedWindHelper
             return round($avg, 2);
         }
 
-        return 0;
+        return null;
     }
 
-    public static function getCurrentFlattendWindDirection(Station $station, int $timeRange = 4): int
+    public static function getCurrentFlattendWindDirection(Station $station, int $timeRange = 4): ?int
     {
         $dir = Entry::where('station_id', $station->id)
             ->where('created_at', '>=', now()->subMinutes($timeRange))
@@ -58,7 +58,7 @@ class CalculatedWindHelper
             return (int)$dir;
         }
 
-        return 0;
+        return null;
     }
 
 
