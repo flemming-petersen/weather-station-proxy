@@ -16,7 +16,7 @@ class EntrySeeder extends Seeder
     {
         $stations = Station::all();
         foreach ($stations as $station) {
-            Entry::factory()->count(100)->create([
+            Entry::factory()->count(10)->create([
                 'station_id' => $station->id,
             ]);
         }

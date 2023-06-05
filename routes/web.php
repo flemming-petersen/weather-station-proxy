@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\StationController;
+use App\Http\Controllers\AdminController;
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +19,12 @@ use App\Http\Controllers\StationController;
 
 
 Route::get('/', [StationController::class, 'index']);
+
+// routes shold be protected by basic auth
+Route::get('/admin', [AdminController::class, 'index'])->middleware('auth.basic');
+
 Route::get('/health', function () {
     return response()->json(['status' => 'ok']);
 });
-
 
 Route::get('/weatherstation/updateweatherstation.php', [EntryController::class, 'store']);
