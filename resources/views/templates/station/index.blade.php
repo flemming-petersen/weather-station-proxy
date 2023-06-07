@@ -6,13 +6,13 @@
             <li class="w-full bg-white p-8 shadow-md my-8">
                 <section class="py-4 flex justify-between align-middle">
                     <h2>{{ $station->public_name }}</h2>
-                    @if($station->entries->last()->created_at->format('d.m.Y H:i') !== null)
+                    @if($station->entries->last())
                         <small class="text-slate-500">Zuletzt aktualisiert: {{ $station->entries->last()->created_at->format('d.m.Y H:i') }}</small>
                     @endif
                 </section>
-                {{-- @if ( $station->entries->last()->wind_speed > 0 )
+                @if ( $station->entries->last() )
                     @include('partials.station.current-values')
-                @endif --}}
+                @endif
                 <section class="mt-8">
                     @isset($station->windguru_widget)
                     {!! $station->windguru_widget !!}

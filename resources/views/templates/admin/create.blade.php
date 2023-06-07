@@ -44,7 +44,7 @@
         </div>
         <div class="flex flex-col">
             <x-form.label name="windguru_widget">Windguru Widget</x-form.label>
-            <x-form.textarea name="windguru_widget" value="{{ $station->windguru_widget }}" />
+            <x-form.textarea name="windguru_widget" />
         </div>
         <button class="rounded bg-cyan-400 p-4" type="submit">Speichern</button>
     </form>
