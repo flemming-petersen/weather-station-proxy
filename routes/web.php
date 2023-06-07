@@ -20,8 +20,15 @@ use Illuminate\Routing\RouteGroup;
 
 Route::get('/', [StationController::class, 'index']);
 
-// routes shold be protected by basic auth
-Route::get('/admin', [AdminController::class, 'index'])->middleware('auth.basic');
+Route::group(['middleware' => 'auth.basic'], function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/{station}', [AdminController::class, 'show']);
+    Route::get('/admin/{station}/edit', [AdminController::class, 'edit']);
+    Route::put('/admin/{station}', [AdminController::class, 'update'])->name('admin.station.update');
+    Route::post('/admin', [AdminController::class, 'store'])->name('admin.station.store');
+    Route::delete('/admin/{station}', [AdminController::class, 'destroy']);
+    Route::get('/admin/station/create', [AdminController::class, 'create'])->name('admin.station.create');
+});
 
 Route::get('/health', function () {
     return response()->json(['status' => 'ok']);

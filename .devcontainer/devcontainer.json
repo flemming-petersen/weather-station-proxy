@@ -27,7 +27,8 @@
 				"onecentlin.laravel-blade",
 				"bmewburn.vscode-intelephense-client",
 				"ms-vsliveshare.vsliveshare",
-				"bradlc.vscode-tailwindcss"
+				"bradlc.vscode-tailwindcss",
+				"MehediDracula.php-namespace-resolver"
 			]
 		}
 	}
