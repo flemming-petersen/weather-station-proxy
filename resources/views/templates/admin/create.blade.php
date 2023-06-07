@@ -42,6 +42,10 @@
             <x-form.label name="windguru_password">Windguru Password</x-form.label>
             <x-form.text name="windguru_password" />
         </div>
+        <div class="flex flex-col">
+            <x-form.label name="windguru_widget">Windguru Widget</x-form.label>
+            <x-form.textarea name="windguru_widget" value="{{ $station->windguru_widget }}" />
+        </div>
         <button class="rounded bg-cyan-400 p-4" type="submit">Speichern</button>
     </form>
 </x-card>

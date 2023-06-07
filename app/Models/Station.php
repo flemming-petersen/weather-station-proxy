@@ -20,6 +20,10 @@ class Station extends Model
         'latitude',
         'longitude',
         'description',
+        'windguru_uid',
+        'windguru_salt',
+        'windguru_paddword',
+        'windguru_widget',
     ];
 
     public function entries(): Relation
