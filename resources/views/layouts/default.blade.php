@@ -9,7 +9,7 @@
     <body class="bg-slate-200">
         <header class="bg-white mb-8 shadow-md">
             <div class="container mx-auto py-8">
-                <h1>Foerdekiter Wetter</h1>
+                <h1 class="ml-6">Foerdekiter Wetter</h1>
             </div>
         </header>
         <main class="container mx-auto">

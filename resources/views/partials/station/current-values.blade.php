@@ -26,6 +26,6 @@
     </div>
     <div>
         <h3>UV-Index</h3>
-        <p>{{ $station->entries->last()->uv }} %</p>
+        <p>{{ $station->entries->last()->uv }}</p>
     </div>
 </section>

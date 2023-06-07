@@ -35,20 +35,20 @@ class AdminController extends Controller
             $request->all()
         );
 
-        return redirect()->back();
+        return redirect()->route('admin.index');
     }
 
     public function store(Request $request): RedirectResponse
     {
         Station::create($request->all());
 
-        return redirect()->back();
+        return redirect()->route('admin.index');
     }
 
     public function delete(Station $station): RedirectResponse
     {
         $station->delete();
 
-        return redirect()->back();
+        return redirect()->route('admin.index');
     }
 }
