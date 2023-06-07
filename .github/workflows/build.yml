@@ -1,8 +1,11 @@
 name: Build Docker image and push to GitHub Container Registry
 
 on:
-  push:
-    branches: ["main"]
+  workflow_run:
+    workflows: ["Test Laravel Application"]
+    branches: [main]
+    types:
+      - completed
 
 concurrency:
   group: ${{ github.ref }}
