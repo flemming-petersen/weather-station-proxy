@@ -11,6 +11,11 @@ class UnitHelper
         return $mph * 0.868976;
     }
 
+    public static function knToMs(float $kn): float
+    {
+        return $kn * 0.514444;
+    }
+
     public static function fahrenheitToCelsius(float $fahrenheit): float
     {
         return round(($fahrenheit - 32) * 5 / 9, 1);
@@ -23,7 +28,7 @@ class UnitHelper
 
     public static function inToMm(float $in): float
     {
-        return round($in * 25.4,0);
+        return round($in * 25.4, 0);
     }
 
     public static function calculateWindDirection(float $windDirection): string

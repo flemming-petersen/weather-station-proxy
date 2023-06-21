@@ -2,11 +2,18 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
 use App\Helpers\UnitHelper;
+use Tests\TestCase;
 
 class UnitHelperTest extends TestCase
 {
+    public function testKnToMs()
+    {
+        $kn = 10;
+        $expectedMs = 5.14444;
+        $this->assertEquals($expectedMs, UnitHelper::knToMs($kn), '', 0.0001);
+    }
+
     public function testMphToKnWithZeroMph()
     {
         $mph = 0;

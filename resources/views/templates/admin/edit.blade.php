@@ -37,6 +37,14 @@
             <x-form.text name="windguru_uid" value="{{ $station->windguru_uid }}" />
         </div>
         <div class="flex flex-col">
+            <x-form.label name="windy_station_id">Windy Station Id Key</x-form.label>
+            <x-form.text name="windy_station_id" value="{{ $station->windy_station_id }}" />
+        </div>
+        <div class="flex flex-col">
+            <x-form.label name="windy_key">Windy Api Key</x-form.label>
+            <x-form.text name="windy_key" value="{{ $station->windy_key }}" />
+        </div>
+        <div class="flex flex-col">
             <x-form.label name="windguru_salt">Windguru Salt</x-form.label>
             <x-form.text name="windguru_salt" value="{{ $station->windguru_salt }}" />
         </div>

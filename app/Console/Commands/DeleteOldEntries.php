@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\Models\Entry;
+use Illuminate\Console\Command;
 
 class DeleteOldEntries extends Command
 {

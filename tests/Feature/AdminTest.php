@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
-use App\Models\User;
 
 class AdminTest extends TestCase
 {
@@ -27,5 +27,4 @@ class AdminTest extends TestCase
         $response = $this->withBasicAuth('admin@test.com', 'password')->get('/admin');
         $response->assertStatus(200);
     }
-
 }

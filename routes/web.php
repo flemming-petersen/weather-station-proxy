@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EntryController;
 use App\Http\Controllers\StationController;
-use App\Http\Controllers\AdminController;
-use Illuminate\Routing\RouteGroup;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +15,6 @@ use Illuminate\Routing\RouteGroup;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 
 Route::get('/', [StationController::class, 'index']);
 

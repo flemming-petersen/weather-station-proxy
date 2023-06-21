@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Helpers;
 
-use App\Models\Station;
 use App\Models\Entry;
+use App\Models\Station;
 
 class CalculatedWindHelper
 {
@@ -55,11 +55,9 @@ class CalculatedWindHelper
             ->avg('wind_direction');
 
         if ($dir) {
-            return (int)$dir;
+            return (int) $dir;
         }
 
         return null;
     }
-
-
 }

@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Station;
-use App\Models\Entry;
 use App\Helpers\UnitHelper;
+use App\Models\Entry;
+use App\Models\Station;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class EntryController extends Controller
 {
-    /**
-     * @param Request $request
-     */
     public function store(Request $request): void
     {
         $station = $this->getStation($request->ID, $request->PASSWORD);
 
-        if (!$station) {
+        if (! $station) {
             Log::error('Station not found', [
                 'station' => $request->ID,
                 'password' => $request->PASSWORD,
@@ -40,15 +37,8 @@ class EntryController extends Controller
         $entry->uv = (float) $request->UV;
         $entry->save();
 
-        return;
     }
 
-    /**
-     * @param string $stattionAlias
-     * @param string $stationSecret
-     *
-     * @return Station|null
-     */
     protected function getStation($stattionAlias, $stationSecret): ?Station
     {
         return Station::where('alias', $stattionAlias)

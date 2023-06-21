@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use App\Models\Entry;
 
 class Station extends Model
 {
@@ -24,6 +23,8 @@ class Station extends Model
         'windguru_salt',
         'windguru_paddword',
         'windguru_widget',
+        'windy_station_id',
+        'windy_key',
     ];
 
     public function entries(): Relation
