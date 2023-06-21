@@ -33,11 +33,12 @@ class SendData extends Command
         $stations = Station::all();
         foreach ($stations as $station) {
             if (CalculatedWindHelper::getCurrentFlattenedAvgWindSpeed($station)) {
-                if ($station->windguru_uid && $station->windguru_salt && $station->windguru_password) {
+                $this->info('Sending data of '. $station->public_name);
+                if (isset($station->windguru_uid) && isset($station->windguru_salt) && isset($station->windguru_password)) {
                     $this->info('Sending data to Windguru...');
                     WindguruService::sendData($station);
                 }
-                if ($station->windy_station_id && $station->windy_key) {
+                if (isset($station->windy_station_id) && isset($station->windy_key)) {
                     $this->info('Sending data to Windy...');
                     WindyService::sendData($station);
                 }
