@@ -23,8 +23,10 @@ class Station extends Model
         'windguru_salt',
         'windguru_paddword',
         'windguru_widget',
+        'windguru_url',
         'windy_station_id',
         'windy_key',
+        'windy_url',
     ];
 
     public function entries(): Relation

@@ -33,16 +33,20 @@
             <x-form.text name="description" value="{{ $station->description }}" />
         </div>
         <div class="flex flex-col">
-            <x-form.label name="windguru_uid">Windguru Uid</x-form.label>
-            <x-form.text name="windguru_uid" value="{{ $station->windguru_uid }}" />
-        </div>
-        <div class="flex flex-col">
             <x-form.label name="windy_station_id">Windy Station Id Key</x-form.label>
             <x-form.text name="windy_station_id" value="{{ $station->windy_station_id }}" />
         </div>
         <div class="flex flex-col">
             <x-form.label name="windy_key">Windy Api Key</x-form.label>
             <x-form.text name="windy_key" value="{{ $station->windy_key }}" />
+        </div>
+        <div class="flex flex-col">
+            <x-form.label name="windy_url">Windy Stations Url</x-form.label>
+            <x-form.text name="windy_url" value="{{ $station->windy_url }}" />
+        </div>
+        <div class="flex flex-col">
+            <x-form.label name="windguru_uid">Windguru Uid</x-form.label>
+            <x-form.text name="windguru_uid" value="{{ $station->windguru_uid }}" />
         </div>
         <div class="flex flex-col">
             <x-form.label name="windguru_salt">Windguru Salt</x-form.label>
@@ -52,6 +56,9 @@
             <x-form.label name="windguru_password">Windguru Password</x-form.label>
             <x-form.text name="windguru_password" value="{{ $station->windguru_password }}" />
         </div>
+        <div class="flex flex-col">
+            <x-form.label name="windguru_url">Windguru Url</x-form.label>
+            <x-form.text name="windguru_url" value="{{ $station->windguru_url }}" />
         <div class="flex flex-col">
             <x-form.label name="windguru_widget">Windguru Widget</x-form.label>
             <x-form.textarea name="windguru_widget" value="{{ $station->windguru_widget }}" />

@@ -16,6 +16,7 @@ class WindyService
     {
         try {
             Http::get('https://stations.windy.com./pws/update/'.$station->windy_key, [
+                'ts' => time(),
                 'station' => $station->windy_station_id,
                 'name' => $station->public_name,
                 'latitude' => $station->latitude,
