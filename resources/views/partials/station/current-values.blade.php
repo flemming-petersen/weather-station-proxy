@@ -1,5 +1,5 @@
 <section class="py-4">
-    <h3 class="mb-2">Wind (letzten 4 min.)</h3>
+    <h3 class="mb-2">Wind (letzten min.)</h3>
     <div class="flex justify-between">
         <div>
             <p>Durchschnitt</p>
