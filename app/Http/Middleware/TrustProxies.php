@@ -15,7 +15,7 @@ class TrustProxies extends Middleware
     protected $proxies = [
         // https://laracasts.com/discuss/channels/servers/laravel-610-behind-nginx-proxy
         // docker swarm trust internal network ip's
-        '172.18.0.0/16',
+        '172.0.0.0/8',
     ];
 
     /**
