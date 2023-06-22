@@ -21,7 +21,6 @@ services:
         env_file:
             - .env
         volumes:
-            - ./database:/var/www/html/databasestore
             - ./storage:/var/www/html/storage
         logging:
             options:
