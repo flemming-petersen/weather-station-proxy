@@ -16,18 +16,27 @@ RUN apk add --no-cache \
     libpng-dev \
     icu-dev \
     icu-libs \
-    tzdata \
-    composer
+    tzdata
 
-RUN docker-php-ext-install pdo_mysql
+# Install PHP extensions
+RUN apk add \
+    php-pdo \
+    php-session \
+    php-xml \
+    php-dom \
+    php-tokenizer \
+    php-xmlwriter
 
 ENV TZ=Europe/Berlin
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 COPY ./ /var/www/html
 
-RUN composer install --optimize-autoloader --no-suggest --no-interaction --no-dev
+RUN composer install --optimize-autoloader --no-interaction --no-dev
 RUN npm ci
 RUN npm run build
+RUN rm -rf node_modules
 
 RUN chmod +x /var/www/html/docker/entrypoint.sh
 
