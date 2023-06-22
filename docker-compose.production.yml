@@ -3,6 +3,8 @@ version: '3.1'
 networks:
   web:
     external: true
+  stack:
+    external: false
 
 services:
     application:
@@ -10,7 +12,12 @@ services:
         image: ghcr.io/flemming-petersen/weather-station-proxy:latest
         networks:
             - web
+            - stack
+        ports:
+           - 8945:9000
         restart: always
+        depends_on:
+            - database
         env_file:
             - .env
         volumes:
@@ -26,6 +33,20 @@ services:
             - "traefik.http.services.foerde.loadbalancer.server.port=9000"
             - "traefik.http.routers.foerde.tls.certresolver=tls"
             - "traefik.docker.network=web"
+
+    database:
+      image: mysql:8.0
+      working_dir: /var/www/html
+      volumes:
+          - ./database:/var/lib/mysql:cached
+      networks:
+          - stack
+      ports:
+          - 3306:3306
+      restart: always
+      env_file:
+          - .env
+      command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci --sql_mode=''
 
     traefik:
         image: "traefik:v2.6"
