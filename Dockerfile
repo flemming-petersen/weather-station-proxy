@@ -18,6 +18,8 @@ RUN apk add --no-cache \
     icu-libs \
     tzdata
 
+RUN docker-php-ext-install pdo_mysql
+
 ENV TZ=Europe/Berlin
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
