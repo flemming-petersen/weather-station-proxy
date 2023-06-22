@@ -19,13 +19,7 @@ RUN apk add --no-cache \
     tzdata
 
 # Install PHP extensions
-RUN apk add \
-    php-pdo \
-    php-session \
-    php-xml \
-    php-dom \
-    php-tokenizer \
-    php-xmlwriter
+RUN docker-php-ext-install pdo_mysql
 
 ENV TZ=Europe/Berlin
 
