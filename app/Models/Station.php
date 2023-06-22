@@ -22,7 +22,6 @@ class Station extends Model
         'windguru_uid',
         'windguru_salt',
         'windguru_paddword',
-        'windguru_widget',
         'windguru_url',
         'windy_station_id',
         'windy_key',

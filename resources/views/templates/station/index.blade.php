@@ -13,11 +13,6 @@
                 @if ( $station->entries->last() )
                     @include('partials.station.current-values')
                 @endif
-                <section class="mt-8">
-                    @isset($station->windguru_widget)
-                    {!! $station->windguru_widget !!}
-                    @endisset
-                </section>
             </li>
         @endforeach
     </ul>

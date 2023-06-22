@@ -64,10 +64,6 @@
             <div class="flex flex-col">
                 <x-form.label name="windguru_url">Windguru Stations Url</x-form.label>
                 <x-form.text name="windguru_url" value="{{ $station->windguru_url }}" />
-            <div class="flex flex-col">
-                <x-form.label name="windguru_widget">Windguru Widget</x-form.label>
-                <x-form.textarea name="windguru_widget" value="{{ $station->windguru_widget }}" />
-            </div>
         </details>
         <button class="rounded bg-cyan-400 p-4" type="submit">Speichern</button>
     </form>
