@@ -76,6 +76,19 @@ jobs:
           authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
       - name: ping server
         run: ping -c 5 ${{ secrets.HOST }}
+      - name: Add SSH key
+        id: ssh
+        env:
+          SSH_KEY: ${{ secrets.PRIVATE_KEY}}
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+          printf "%s" "$SSH_KEY" > ~/.ssh/key
+          chmod 600 ~/.ssh/key
+      - name: Deploy
+        id: deploy
+        run: |
+          ssh -i ~/.ssh/key "${{ secrets.USER_NAME }}@${{ secrets.HOST }}" "ls -al"
       # - name: pull and start new image
       #   uses: appleboy/ssh-action@master
       #   with:
