@@ -63,36 +63,23 @@ jobs:
           push: true
           tags: "ghcr.io/${{ github.repository }}:latest"
 
-  deploy:
+  # deploy:
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    needs: build-and-push-image
+  #   needs: build-and-push-image
 
-    steps:
-      - name: Tailscale
-        uses: tailscale/github-action@v1
-        with:
-          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
-      - name: ping server
-        run: ping -c 5 ${{ secrets.HOST }}
-      - name: Add SSH key
-        id: ssh
-        env:
-          SSH_KEY: ${{ secrets.PRIVATE_KEY}}
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan ${{ secrets.HOST }} >> ~/.ssh/known_hosts
-          printf "%s" "$SSH_KEY" > ~/.ssh/key
-          chmod 600 ~/.ssh/key
-      - name: Deploy
-        id: deploy
-        run: |
-          ssh -i ~/.ssh/key "${{ secrets.USER_NAME }}@${{ secrets.HOST }}" "ls -al"
-      # - name: pull and start new image
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USER_NAME }}
-      #     key: ${{ secrets.PRIVATE_KEY}}
-      #     script: cd foerde && docker compose pull && docker compose up -d
+  #   steps:
+  #     - name: Tailscale
+  #       uses: tailscale/github-action@v1
+  #       with:
+  #         authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+  #     - name: ping server
+  #       run: ping -c 5 ${{ secrets.HOST }}
+  #     - name: pull and start new image
+  #       uses: appleboy/ssh-action@master
+  #       with:
+  #         host: ${{ secrets.HOST }}
+  #         username: ${{ secrets.USER_NAME }}
+  #         key: ${{ secrets.PRIVATE_KEY}}
+  #         script: cd foerde && docker compose pull && docker compose up -d
